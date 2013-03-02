@@ -1,0 +1,11 @@
+{
+	"name": "Classy",
+	"version": "0.1.0",
+	"description": "Make your JavaScript objects classy.",
+	"author": "Evan Hahn <me@evanhahn.com>",
+	"main": "classy.js",
+	"devDependencies": {
+		"expect.js": "*",
+		"mocha": "*"
+	}
+}
