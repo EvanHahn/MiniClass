@@ -36,7 +36,7 @@
 				methods[property] = hash[property];
 				if (typeof existingFunctions[property] === 'function') {
 					Class.prototype[property] = function() {
-						this.sup = function() {
+						this.super = function() {
 							existingFunctions[property].apply(this, arguments);
 						};
 						return methods[property].apply(this, arguments);
@@ -46,7 +46,7 @@
 				// We didn't have that existing parent function, so we're good.
 				else {
 					Class.prototype[property] = function() {
-						this.sup = void 0;
+						this.super = function() {};
 						return methods[property].apply(this, arguments);
 					};
 				}
