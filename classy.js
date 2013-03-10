@@ -1,4 +1,4 @@
-;(function(global) {
+;(function() {
 
 	// `Classy` is just the base class for everything, and its constructor is
 	// empty.
