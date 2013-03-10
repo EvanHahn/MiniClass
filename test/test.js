@@ -46,10 +46,10 @@ describe("Classy", function() {
 				return "Hello! I am a(n) " + this.type;
 			}
 		});
-		var Manager = Classy.extend({
+		var Manager = Employee.extend({
 			type: "manager",
 		});
-		var President = Classy.extend({
+		var President = Manager.extend({
 			type: "president",
 		});
 		var e = new Employee;
