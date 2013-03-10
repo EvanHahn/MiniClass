@@ -27,6 +27,7 @@
 		// Create the constructor, which calls the parent constructor and the
 		// child one.
 		var Class = function() {
+			this.super = parent;
 			ctor.apply(this, arguments);
 		};
 
