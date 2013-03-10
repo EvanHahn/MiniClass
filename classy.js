@@ -66,7 +66,7 @@
 			// Return the constructor (with attached prototype stuff).
 			return Class;
 
-		})(this, hash.init);
+		})(this, hash.initialize);
 
 	};
 
