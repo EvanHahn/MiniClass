@@ -21,8 +21,7 @@
 		// `Classy`.
 		var ctor = hash.initialize;
 
-		// Create the constructor, which calls the parent constructor and the
-		// child one.
+		// Create the constructor, which calls the parent constructor.
 		var Class = function() {
 			this.super = parent;
 			if (ctor)
