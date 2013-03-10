@@ -20,15 +20,15 @@
 		// If we don't have one, steal the parent's, or a noop if we're extending
 		// `Classy`.
 		var ctor = hash.initialize;
-		if (!ctor) {
-			ctor = parent.prototype.initialize || noop;
-		}
 
 		// Create the constructor, which calls the parent constructor and the
 		// child one.
 		var Class = function() {
 			this.super = parent;
-			ctor.apply(this, arguments);
+			if (ctor)
+				ctor.apply(this, arguments);
+			else
+				parent.apply(this, arguments);
 		};
 
 		// Inherit all the class methods/properties from the parent.
