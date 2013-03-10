@@ -8,7 +8,7 @@
 	Classy.extend = function(hash) {
 
 		// Generate the resulting object.
-		return (function closure(par, ctor) {
+		return (function(parent, ctor) {
 
 			// If no constructor is defined, define an empty one.
 			if (!ctor)
@@ -17,44 +17,47 @@
 			// Create the constructor, which calls the parent constructor and the
 			// child one.
 			var Class = function() {
-				par.apply(this, arguments);
 				ctor.apply(this, arguments);
 			};
 
 			// Inherit all the properties from the parent.
-			for (var property in par.prototype)
-				Class.prototype[property] = par.prototype[property];
+			for (var property in parent.prototype)
+				Class.prototype[property] = parrent.prototype[property];
 
 			// Get all the properties from the new hash.
-			var existingFunctions = methods = {};
 			for (var property in hash) {
 
-				// If we already have a property in there that's a function, the child
-				// needs a `sup()` method in there.
-				var existingFunctions = methods = {};
-				existingFunctions[property] = par.prototype[property];
-				methods[property] = hash[property];
-				if (typeof existingFunctions[property] === 'function') {
-					Class.prototype[property] = function() {
-						this.super = function() {
-							existingFunctions[property].apply(this, arguments);
-						};
-						return methods[property].apply(this, arguments);
-					};
+				// If it's not a method, don't even worry about it.
+				if (typeof hash[property] !== "function") {
+					Class.prototype[property] = hash[property];
 				}
 
-				// We didn't have that existing parent function, so we're good.
+				// It's a function -- a little more difficult.
 				else {
-					Class.prototype[property] = function() {
-						this.super = function() {};
-						return methods[property].apply(this, arguments);
-					};
+
+					// If we already have a property in there that's a function, the child
+					// needs a `super()` method in there.
+					if (typeof parent.prototype[property] === "function") {
+						Class.prototype[property] = function() {
+							var self = this;
+							this.super = function() {
+								parent.prototype[property].apply(self, arguments);
+							};
+							return hash[property].apply(this, arguments);
+						};
+					}
+
+					// We didn't have that existing parent function, so we're good.
+					else {
+						Class.prototype[property] = function() {
+							this.super = function() {};
+							return hash[property].apply(this, arguments);
+						};
+					}
+
 				}
 
 			}
-
-			// Make sure to get `extend()` into the class.
-			Class.extend = Classy.extend;
 
 			// Return the constructor (with attached prototype stuff).
 			return Class;
@@ -64,7 +67,7 @@
 	};
 
 	// Export everything.
-	if (module != null) {
+	if (typeof module !== "undefined") {
 		module.exports = Classy;
 	} else {
 		this.Classy = Classy;
