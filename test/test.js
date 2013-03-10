@@ -39,7 +39,7 @@ describe("Classy", function() {
 		expect(bar.thing()).eql("I am bar.");
 	});
 
-	it("allows subclasses to be created, two levels deep", function() {
+	it("allows subclasses to be created, multiple levels deep", function() {
 		var Employee = Classy.extend({
 			type: "employee",
 			introduce: function() {
