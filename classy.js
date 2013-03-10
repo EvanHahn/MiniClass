@@ -17,8 +17,6 @@
 		var parent = this;
 
 		// Build the constructor.
-		// If we don't have one, steal the parent's, or a noop if we're extending
-		// `Classy`.
 		var ctor = hash.initialize;
 
 		// Create the constructor, which calls the parent constructor.
