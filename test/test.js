@@ -99,7 +99,7 @@ describe("Classy", function() {
 			type: "wizard"
 		});
 		var merlin = new Wizard("Merlin");
-		expect(merlin.introduce()).eql("Hello! I am a magical wizard and my name is Merlin!");
+		expect(merlin.introduce()).eql("Hello. I am a magical wizard and my name is Merlin!");
 	});
 
 	it("supports super methods", function() {
