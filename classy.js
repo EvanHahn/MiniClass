@@ -1,4 +1,4 @@
-(function(global) {
+;(function(global) {
 
 	// `Classy` is just the base class for everything, and its constructor is
 	// empty.
@@ -67,7 +67,7 @@
 	if (module != null) {
 		module.exports = Classy;
 	} else {
-		// this.Classy = Classy;
+		this.Classy = Classy;
 	}
 
 })(this);
