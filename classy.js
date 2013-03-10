@@ -22,7 +22,7 @@
 
 			// Inherit all the properties from the parent.
 			for (var property in parent.prototype)
-				Class.prototype[property] = parrent.prototype[property];
+				Class.prototype[property] = parent.prototype[property];
 
 			// Get all the properties from the new hash.
 			for (var property in hash) {
