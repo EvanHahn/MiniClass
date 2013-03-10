@@ -23,3 +23,9 @@ Pretty straightforward, I hope:
 
     var merlin = new Wizard("Merlin");
     merlin.introduce();  // => "Hello. I am a magical wizard and my name is Merlin!"
+
+Running the tests
+-----------------
+
+    npm install
+    mocha
