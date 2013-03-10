@@ -86,6 +86,25 @@ describe("Classy", function() {
 		expect(counter).eql(49);
 	});
 
+	it("supports super methods", function() {
+		var Foo = Classy.extend({
+			counter: 0,
+			coolMethod: function(amount) {
+				this.counter += amount;
+			}
+		});
+		var Bar = Foo.extend({
+			coolMethod: function(amount) {
+				this.counter += 5;
+				this.super(amount);
+			}
+		});
+		var b = new Bar;
+		expect(b.counter).eql(0);
+		b.coolMethod(12);
+		expect(b.counter).eql(5 + 12);
+	});
+
 	it("makes super() a noop if there's no parent at all", function() {
 		var Foo = Classy.extend({
 			coolMethod: function() {
