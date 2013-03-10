@@ -2,7 +2,7 @@ var expect = require("expect.js");
 
 var Classy = require("../classy.js");
 
-describe("simple instantiation", function() {
+describe("Classy", function() {
 
 	it("should allow classes to be created", function() {
 		var foo = new Classy;
