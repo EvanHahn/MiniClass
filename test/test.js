@@ -60,4 +60,30 @@ describe("Classy", function() {
 		expect(p.introduce()).eql("Hello! I am a(n) president");
 	});
 
+	it("supports constructor functions with no arguments", function() {
+		var counter = 0;
+		var Foo = Classy.extend({
+			initialize: function() {
+				counter ++;
+			}
+		});
+		new Foo;
+		new Foo;
+		new Foo;
+		expect(counter).eql(3);
+	});
+
+	it("supports constructor functions with arguments", function() {
+		var counter = 0;
+		var Foo = Classy.extend({
+			initialize: function(amount) {
+				counter += amount;
+			}
+		});
+		new Foo(1);
+		new Foo(50);
+		new Foo(-2);
+		expect(counter).eql(49);
+	});
+
 });
