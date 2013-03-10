@@ -86,6 +86,22 @@ describe("Classy", function() {
 		expect(counter).eql(49);
 	});
 
+	it("can defer to parent methods", function() {
+		var MagicalPerson = Classy.extend({
+			initialize: function(first) {
+				this.firstName = first;
+			},
+			introduce: function() {
+				return "Hello. I am a magical " + this.type + " and my name is " + this.firstName + "!";
+			}
+		});
+		var Wizard = MagicalPerson.extend({
+			type: "wizard"
+		});
+		var merlin = new Wizard("Merlin");
+		expect(merlin.introduce()).eql("Hello! I am a magical wizard and my name is Merlin!");
+	});
+
 	it("supports super methods", function() {
 		var Foo = Classy.extend({
 			counter: 0,
