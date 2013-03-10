@@ -102,7 +102,7 @@ describe("Classy", function() {
 		expect(merlin.introduce()).eql("Hello. I am a magical wizard and my name is Merlin!");
 	});
 
-	it("supports super methods", function() {
+	it("supports super methods in regular methods", function() {
 		var Foo = Classy.extend({
 			counter: 0,
 			coolMethod: function(amount) {
@@ -119,6 +119,22 @@ describe("Classy", function() {
 		expect(b.counter).eql(0);
 		b.coolMethod(12);
 		expect(b.counter).eql(5 + 12);
+	});
+
+	it("supports super methods in the constructor", function() {
+		var Foo = Classy.extend({
+			initialize: function() {
+				this.value = 12;
+			}
+		});
+		var Bar = Foo.extend({
+			initialize: function() {
+				this.value = 5;
+				this.super();
+			}
+		});
+		var b = new Bar;
+		expect(b.value).eql(12);
 	});
 
 	it("makes super() a noop if there's no parent at all", function() {
