@@ -1,3 +1,10 @@
+/*
+Classy
+by Evan Hahn (evanhahn.com)
+https://github.com/EvanHahn/Classy
+MIT License
+*/
+
 ;(function() {
 
 	// First, define some useful things.
