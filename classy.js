@@ -21,6 +21,10 @@
 			};
 
 			// Inherit all the properties from the parent.
+			for (var property in parent) {
+				if (property !== "prototype")
+					Class[property] = parent[property];
+			}
 			for (var property in parent.prototype)
 				Class.prototype[property] = parent.prototype[property];
 
