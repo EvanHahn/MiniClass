@@ -6,7 +6,7 @@ describe("Classy", function() {
 
 	var undefined;
 
-	it("should allow classes to be created", function() {
+	it("should allow Classy instances to be created", function() {
 		var foo = new Classy;
 		var bar = new Classy;
 		foo.x = 12;
