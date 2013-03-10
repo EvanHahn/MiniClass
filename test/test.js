@@ -39,4 +39,25 @@ describe("Classy", function() {
 		expect(bar.thing()).eql("I am bar.");
 	});
 
+	it("allows subclasses to be created, two levels deep", function() {
+		var Employee = Classy.extend({
+			type: "employee",
+			introduce: function() {
+				return "Hello! I am a(n) " + this.type;
+			}
+		});
+		var Manager = Classy.extend({
+			type: "manager",
+		});
+		var President = Classy.extend({
+			type: "president",
+		});
+		var e = new Employee;
+		var m = new Manager;
+		var p = new President;
+		expect(e.introduce()).eql("Hello! I am a(n) employee");
+		expect(m.introduce()).eql("Hello! I am a(n) manager");
+		expect(p.introduce()).eql("Hello! I am a(n) president");
+	});
+
 });
