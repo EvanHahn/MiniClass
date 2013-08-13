@@ -1,14 +1,14 @@
 var expect = require("expect.js");
 
-var Classy = require("../classy.js");
+var MiniClass = require("../miniclass.js");
 
-describe("Classy", function() {
+describe("MiniClass", function() {
 
 	var undefined;
 
-	it("should allow Classy instances to be created", function() {
-		var foo = new Classy;
-		var bar = new Classy;
+	it("should allow MiniClass instances to be created", function() {
+		var foo = new MiniClass;
+		var bar = new MiniClass;
 		foo.x = 12;
 		bar.x = 8;
 		expect(foo).not.equal(bar);
@@ -17,13 +17,13 @@ describe("Classy", function() {
 	});
 
 	it("allows subclasses to be created, one level deep", function() {
-		var Foo = Classy.extend({
+		var Foo = MiniClass.extend({
 			x: 12,
 			thing: function() {
 				return "I am foo!";
 			}
 		});
-		var Bar = Classy.extend({
+		var Bar = MiniClass.extend({
 			x: 8,
 			thing: function() {
 				return "I am bar.";
@@ -40,7 +40,7 @@ describe("Classy", function() {
 	});
 
 	it("allows subclasses to be created, multiple levels deep", function() {
-		var Employee = Classy.extend({
+		var Employee = MiniClass.extend({
 			type: "employee",
 			introduce: function() {
 				return "Hello! I am a(n) " + this.type;
@@ -62,7 +62,7 @@ describe("Classy", function() {
 
 	it("supports constructor functions with no arguments", function() {
 		var counter = 0;
-		var Foo = Classy.extend({
+		var Foo = MiniClass.extend({
 			initialize: function() {
 				counter ++;
 			}
@@ -75,7 +75,7 @@ describe("Classy", function() {
 
 	it("supports constructor functions with arguments", function() {
 		var counter = 0;
-		var Foo = Classy.extend({
+		var Foo = MiniClass.extend({
 			initialize: function(amount) {
 				counter += amount;
 			}
@@ -87,7 +87,7 @@ describe("Classy", function() {
 	});
 
 	it("can defer to parent methods", function() {
-		var MagicalPerson = Classy.extend({
+		var MagicalPerson = MiniClass.extend({
 			initialize: function(first) {
 				this.firstName = first;
 			},
@@ -100,62 +100,6 @@ describe("Classy", function() {
 		});
 		var merlin = new Wizard("Merlin");
 		expect(merlin.introduce()).eql("Hello. I am a magical wizard and my name is Merlin!");
-	});
-
-	it("supports super methods in regular methods", function() {
-		var Foo = Classy.extend({
-			counter: 0,
-			coolMethod: function(amount) {
-				this.counter += amount;
-			}
-		});
-		var Bar = Foo.extend({
-			coolMethod: function(amount) {
-				this.counter += 5;
-				this.super(amount);
-			}
-		});
-		var b = new Bar;
-		expect(b.counter).eql(0);
-		b.coolMethod(12);
-		expect(b.counter).eql(5 + 12);
-	});
-
-	it("supports super methods in the constructor", function() {
-		var Foo = Classy.extend({
-			initialize: function() {
-				this.value = 12;
-			}
-		});
-		var Bar = Foo.extend({
-			initialize: function() {
-				this.value = 5;
-				this.super();
-			}
-		});
-		var b = new Bar;
-		expect(b.value).eql(12);
-	});
-
-	it("makes super() a noop if there's no parent at all", function() {
-		var Foo = Classy.extend({
-			coolMethod: function() {
-				this.super();
-			}
-		});
-		var f = new Foo;
-		f.coolMethod();
-	});
-
-	it("makes super() a noop if there's no parent at all", function() {
-		var Foo = Classy.extend({});
-		var Bar = Classy.extend({
-			coolMethod: function() {
-				this.super();
-			}
-		});
-		var b = new Bar;
-		b.coolMethod();
 	});
 
 });

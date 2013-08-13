@@ -1,9 +1,9 @@
 {
-	"name": "Classy",
-	"version": "1.0.0",
-	"description": "Make your JavaScript objects classy.",
+	"name": "MiniClass",
+	"version": "2.0.0",
+	"description": "A tiny class library.",
 	"author": "Evan Hahn <me@evanhahn.com>",
-	"main": "classy.js",
+	"main": "miniclass.js",
 	"devDependencies": {
 		"expect.js": "*",
 		"mocha": "*"

@@ -1,5 +1,5 @@
-Classy.js
-=========
+MiniClass.js
+============
 
 A tiny class library. I wrote this mostly to make sure I understood JavaScript's prototype stuff.
 
@@ -8,7 +8,7 @@ Usage
 
 Pretty straightforward, I hope:
 
-    var MagicalPerson = Classy.extend({
+    var MagicalPerson = MiniClass.extend({
       initialize: function(first) {
         this.firstName = first;
       },
