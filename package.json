@@ -1,11 +1,24 @@
 {
-	"name": "MiniClass",
-	"version": "2.0.0",
-	"description": "A tiny class library.",
-	"author": "Evan Hahn <me@evanhahn.com>",
-	"main": "miniclass.js",
-	"devDependencies": {
-		"expect.js": "*",
-		"mocha": "*"
-	}
+  "name": "miniclass",
+  "version": "2.0.0",
+  "description": "A tiny class library.",
+  "author": "Evan Hahn <me@evanhahn.com> (http://evanhahn.com)",
+  "license": "MIT",
+  "keywords": [
+    "class",
+    "miniclass",
+    "inheritance"
+  ],
+  "main": "miniclass.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.x",
+    "mocha": "1.20.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EvanHahn/MiniClass.git"
+  }
 }

@@ -4,8 +4,6 @@ var MiniClass = require("../miniclass.js");
 
 describe("MiniClass", function() {
 
-	var undefined;
-
 	it("should allow MiniClass instances to be created", function() {
 		var foo = new MiniClass;
 		var bar = new MiniClass;

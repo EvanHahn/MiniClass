@@ -46,7 +46,7 @@
 	};
 
 	// mmm export that puppy
-	if (module.exports)
+  if (typeof module !== 'undefined')
 		module.exports = MiniClass;
 	else
 		this.MiniClass = MiniClass;
